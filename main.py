@@ -1,27 +1,3 @@
-import spotipy, time, asyncio, random
-from spotipy.oauth2 import SpotifyOAuth
-from kasa import SmartBulb
-
-cid = 'CLIENT_ID'
-secret = 'SECRET_ID'
-redirect_uri = "REDIRECT_URL"
-scope = "user-read-currently-playing"
-spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid,
-                                               client_secret=secret,
-                                               redirect_uri=redirect_uri,
-                                               scope=scope))
-current_song_id = ""
-start_time = ""
-
-async def color(rhue):
-    bulb = SmartBulb("")
-    run_once = 0
-    if run_once == 0:
-        await bulb.update()
-        run_once = 1
-    await bulb.set_hsv(rhue, 100, 100, transition=0)
-    #print(bulb.hsv)
-
 import spotipy, time, asyncio, random,
 from spotipy.oauth2 import SpotifyOAuth
 from kasa import SmartBulb
@@ -30,10 +6,7 @@ cid = 'CLIENT_ID'
 secret = 'SECRET_ID'
 redirect_uri = "REDIRECT_URL"
 scope = "user-read-currently-playing"
-spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid,
-                                               client_secret=secret,
-                                               redirect_uri=redirect_uri,
-                                               scope=scope))
+spotify = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid, client_secret=secret, redirect_uri=redirect_uri, scope=scope))
 current_song_id = ""
 start_time = ""
 
@@ -92,3 +65,4 @@ def loop():
 
 while True:
     loop()
+
